@@ -1,9 +1,9 @@
 package org.example.classes;
 
 public class Aluno {
-    String nome;
+    public String nome;
     int idade;
-    String dataNascimento;
+    private String dataNascimento;
     String registroGeral;
     String numeroCpf;
     String nomeMae;
