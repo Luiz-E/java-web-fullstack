@@ -5,6 +5,9 @@ import org.example.classes.Aluno;
 public class Main {
     public static void main(String[] args) {
         Aluno aluno1 = new Aluno();
+
+        //Aluno aluno1 = null;
+
         //aluno1.nome = "João";
         //System.out.println("Nome: " + aluno1.nome);
         aluno1.setNome("João da Silva");
@@ -13,6 +16,7 @@ public class Main {
         aluno1.setRegistroGeral("4454.5435.435");
         aluno1.setNumeroCpf("123.453.134-70");
         aluno1.setNomeMae("Shirlei");
+        //aluno1 = null;
         aluno1.setNomeMae("Antonio");
         aluno1.setDataMatricula("10/01/2019");
         aluno1.setSerieMatriculado("5");
