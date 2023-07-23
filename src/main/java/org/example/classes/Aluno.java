@@ -1,5 +1,7 @@
 package org.example.classes;
 
+import java.util.Objects;
+
 public class Aluno {
     private String nome;
     private int idade;
@@ -171,5 +173,18 @@ public class Aluno {
                 ", media=" + getMediaNota() + '\'' +
                 ", aprovado=" + getAlunoAprovado2() + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Aluno aluno = (Aluno) o;
+        return Objects.equals(nome, aluno.nome) && Objects.equals(numeroCpf, aluno.numeroCpf);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, numeroCpf);
     }
 }
