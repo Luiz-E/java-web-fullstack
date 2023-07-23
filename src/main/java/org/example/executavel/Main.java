@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        Aluno aluno1 = new Aluno();
+        Aluno aluno = new Aluno();
 
         String nome = JOptionPane.showInputDialog("Qual o nome do aluno? ");
         String idade = JOptionPane.showInputDialog("Qual a idade?");
@@ -23,28 +23,24 @@ public class Main {
         String nota3 = JOptionPane.showInputDialog("Qual a nota 3?");
         String nota4 = JOptionPane.showInputDialog("Qual a nota 4?");
 
-        aluno1.setNome(nome);
-        aluno1.setIdade(Integer.parseInt(idade));
-        aluno1.setDataNascimento(dataNascimento);
-        aluno1.setRegistroGeral(rg);
-        aluno1.setNumeroCpf(cpf);
-        aluno1.setNomeMae(nomeMae);
-        aluno1.setNomeMae(nomePai);
-        aluno1.setDataMatricula(dataMatricula);
-        aluno1.setSerieMatriculado(serie);
-        aluno1.setNomeEscola(escola);
+        aluno.setNome(nome);
+        aluno.setIdade(Integer.parseInt(idade));
+        aluno.setDataNascimento(dataNascimento);
+        aluno.setRegistroGeral(rg);
+        aluno.setNumeroCpf(cpf);
+        aluno.setNomeMae(nomeMae);
+        aluno.setNomeMae(nomePai);
+        aluno.setDataMatricula(dataMatricula);
+        aluno.setSerieMatriculado(serie);
+        aluno.setNomeEscola(escola);
 
-        aluno1.setNota1(Double.parseDouble(nota1));
-        aluno1.setNota2(Double.parseDouble(nota2));
-        aluno1.setNota3(Double.parseDouble(nota3));
-        aluno1.setNota4(Double.parseDouble(nota4));
+        aluno.setNota1(Double.parseDouble(nota1));
+        aluno.setNota2(Double.parseDouble(nota2));
+        aluno.setNota3(Double.parseDouble(nota3));
+        aluno.setNota4(Double.parseDouble(nota4));
 
-        System.out.println("Nome: " + aluno1.getNome());
-        System.out.println("Idade: " + aluno1.getIdade());
-        System.out.println("Data de nascimento: " + aluno1.getDataNascimento());
-        System.out.println("Media: " + aluno1.getMediaNota());
-        System.out.println(aluno1.getAlunoAprovado2());
 
+        System.out.println(aluno);
 
     }
 }

@@ -151,4 +151,25 @@ public class Aluno {
         return getMediaNota() >= 70 ? "Aluno está aprovado" : "Aluno está reprovado";
     }
 
+    @Override
+    public String toString() {
+        return "Aluno{" +
+                "nome='" + nome + '\'' +
+                ", idade=" + idade +
+                ", dataNascimento='" + dataNascimento + '\'' +
+                ", registroGeral='" + registroGeral + '\'' +
+                ", numeroCpf='" + numeroCpf + '\'' +
+                ", nomeMae='" + nomeMae + '\'' +
+                ", nomePai='" + nomePai + '\'' +
+                ", dataMatricula='" + dataMatricula + '\'' +
+                ", nomeEscola='" + nomeEscola + '\'' +
+                ", serieMatriculado='" + serieMatriculado + '\'' +
+                ", nota1=" + nota1 + '\'' +
+                ", nota2=" + nota2 + '\'' +
+                ", nota3=" + nota3 + '\'' +
+                ", nota4=" + nota4 + '\'' +
+                ", media=" + getMediaNota() + '\'' +
+                ", aprovado=" + getAlunoAprovado2() + '\'' +
+                '}';
+    }
 }
