@@ -25,6 +25,9 @@ public class Main {
 
         System.out.printf("Média : %.2f\n", aluno1.getMediaNota());
 
+        System.out.println("Resultado: " + (aluno1.getAlunoAprovado() ? "Aprovado" : "Reprovado"));
+        System.out.println(aluno1.getAlunoAprovado2());
+
         System.out.println("Nome: " + aluno1.getNome());
         System.out.println("Idade: " + aluno1.getIdade());
         System.out.println("Data de nascimento: " + aluno1.getDataNascimento());

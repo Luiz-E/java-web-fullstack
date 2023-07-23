@@ -143,4 +143,12 @@ public class Aluno {
         return (nota1 + nota2 + nota3 + nota4) / 4;
     }
 
+    public boolean getAlunoAprovado() {
+        return getMediaNota() >= 70;
+    }
+
+    public String getAlunoAprovado2() {
+        return getMediaNota() >= 70 ? "Aluno está aprovado" : "Aluno está reprovado";
+    }
+
 }
