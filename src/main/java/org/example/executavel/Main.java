@@ -18,6 +18,13 @@ public class Main {
         aluno1.setSerieMatriculado("5");
         aluno1.setNomeEscola("JDev Treinamento");
 
+        aluno1.setNota1(90);
+        aluno1.setNota2(80.8);
+        aluno1.setNota3(70.9);
+        aluno1.setNota4(90.7);
+
+        System.out.printf("Média : %.2f\n", aluno1.getMediaNota());
+
         System.out.println("Nome: " + aluno1.getNome());
         System.out.println("Idade: " + aluno1.getIdade());
         System.out.println("Data de nascimento: " + aluno1.getDataNascimento());
@@ -28,5 +35,7 @@ public class Main {
         Aluno aluno3 = new Aluno();
         Aluno aluno4 = new Aluno("Maria");
         Aluno aluno5 = new Aluno("José", 50);
+
+
     }
 }
