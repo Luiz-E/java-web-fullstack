@@ -39,15 +39,14 @@ public class Main {
         aluno.setSerieMatriculado(serie);
         aluno.setNomeEscola(escola);
 
-        aluno.setNota1(Double.parseDouble(nota1));
-        aluno.setNota2(Double.parseDouble(nota2));
-        aluno.setNota3(Double.parseDouble(nota3));
-        aluno.setNota4(Double.parseDouble(nota4));
-
-        aluno.setDisciplina1(disciplina1);
-        aluno.setDisciplina2(disciplina2);
-        aluno.setDisciplina3(disciplina3);
-        aluno.setDisciplina4(disciplina4);
+        aluno.getDisciplina().setNota1(Double.parseDouble(nota1));
+        aluno.getDisciplina().setNota2(Double.parseDouble(nota2));
+        aluno.getDisciplina().setNota3(Double.parseDouble(nota3));
+        aluno.getDisciplina().setNota4(Double.parseDouble(nota4));
+        aluno.getDisciplina().setDisciplina1(disciplina1);
+        aluno.getDisciplina().setDisciplina2(disciplina2);
+        aluno.getDisciplina().setDisciplina3(disciplina3);
+        aluno.getDisciplina().setDisciplina4(disciplina4);
 
     }
 }
