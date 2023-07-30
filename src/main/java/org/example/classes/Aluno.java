@@ -118,7 +118,12 @@ public class Aluno {
     }
 
     public double getMediaNota() {
-        return 0;
+        //return disciplinas.stream().mapToDouble(Disciplina::getNota).average().getAsDouble();
+        double media = 0;
+        for (Disciplina disciplina : disciplinas) {
+            media += disciplina.getNota();
+        }
+        return media / disciplinas.size();
     }
 
     public boolean getAlunoAprovado() {
