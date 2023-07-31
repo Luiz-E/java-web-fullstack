@@ -20,30 +20,6 @@ public class Main {
         String serie = JOptionPane.showInputDialog("Qual a serie?");
         String escola = JOptionPane.showInputDialog("Qual a escola?");
 
-        Disciplina disciplina1 = new Disciplina();
-        disciplina1.setDisciplina("Banco de Dados");
-        disciplina1.setNota(90);
-
-        aluno.getDisciplinas().add(disciplina1);
-
-        Disciplina disciplina2 = new Disciplina();
-        disciplina2.setDisciplina("Matemática");
-        disciplina2.setNota(80);
-
-        aluno.getDisciplinas().add(disciplina2);
-
-        Disciplina disciplina3 = new Disciplina();
-        disciplina3.setDisciplina("Geográfia");
-        disciplina3.setNota(97);
-
-        aluno.getDisciplinas().add(disciplina3);
-
-        Disciplina disciplina4 = new Disciplina();
-        disciplina4.setDisciplina("Java Web");
-        disciplina4.setNota(70);
-
-        aluno.getDisciplinas().add(disciplina4);
-
         aluno.setNome(nome);
         aluno.setIdade(Integer.parseInt(idade));
         aluno.setDataNascimento(dataNascimento);
@@ -54,6 +30,15 @@ public class Main {
         aluno.setDataMatricula(dataMatricula);
         aluno.setSerieMatriculado(serie);
         aluno.setNomeEscola(escola);
+
+        for (int i = 0; i < 4; i++) {
+            String nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina?");
+            String notaDisciplina = JOptionPane.showInputDialog("Nota da disciplina?");
+            Disciplina disciplina = new Disciplina();
+            disciplina.setDisciplina(nomeDisciplina);
+            disciplina.setNota(Double.parseDouble(notaDisciplina));
+            aluno.getDisciplinas().add(disciplina);
+        }
 
         System.out.println(aluno.getMediaNota());
 
