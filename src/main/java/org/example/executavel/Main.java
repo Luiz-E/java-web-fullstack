@@ -9,27 +9,27 @@ public class Main {
     public static void main(String[] args) {
 
         Aluno aluno = new Aluno();
-        String nome = JOptionPane.showInputDialog("Qual o nome do aluno? ");
-        String idade = JOptionPane.showInputDialog("Qual a idade?");
-        String dataNascimento = JOptionPane.showInputDialog("Qual a data de nascimento?");
-        String rg = JOptionPane.showInputDialog("Qual o RG?");
-        String cpf = JOptionPane.showInputDialog("Qual o cpf?");
-        String nomeMae = JOptionPane.showInputDialog("Qual o nome da mãe?");
-        String nomePai = JOptionPane.showInputDialog("Qual o nome do pai");
-        String dataMatricula = JOptionPane.showInputDialog("Qual a data da matrícula?");
-        String serie = JOptionPane.showInputDialog("Qual a serie?");
-        String escola = JOptionPane.showInputDialog("Qual a escola?");
-
-        aluno.setNome(nome);
-        aluno.setIdade(Integer.parseInt(idade));
-        aluno.setDataNascimento(dataNascimento);
-        aluno.setRegistroGeral(rg);
-        aluno.setNumeroCpf(cpf);
-        aluno.setNomeMae(nomeMae);
-        aluno.setNomeMae(nomePai);
-        aluno.setDataMatricula(dataMatricula);
-        aluno.setSerieMatriculado(serie);
-        aluno.setNomeEscola(escola);
+//        String nome = JOptionPane.showInputDialog("Qual o nome do aluno? ");
+//        String idade = JOptionPane.showInputDialog("Qual a idade?");
+//        String dataNascimento = JOptionPane.showInputDialog("Qual a data de nascimento?");
+//        String rg = JOptionPane.showInputDialog("Qual o RG?");
+//        String cpf = JOptionPane.showInputDialog("Qual o cpf?");
+//        String nomeMae = JOptionPane.showInputDialog("Qual o nome da mãe?");
+//        String nomePai = JOptionPane.showInputDialog("Qual o nome do pai");
+//        String dataMatricula = JOptionPane.showInputDialog("Qual a data da matrícula?");
+//        String serie = JOptionPane.showInputDialog("Qual a serie?");
+//        String escola = JOptionPane.showInputDialog("Qual a escola?");
+//
+//        aluno.setNome(nome);
+//        aluno.setIdade(Integer.parseInt(idade));
+//        aluno.setDataNascimento(dataNascimento);
+//        aluno.setRegistroGeral(rg);
+//        aluno.setNumeroCpf(cpf);
+//        aluno.setNomeMae(nomeMae);
+//        aluno.setNomeMae(nomePai);
+//        aluno.setDataMatricula(dataMatricula);
+//        aluno.setSerieMatriculado(serie);
+//        aluno.setNomeEscola(escola);
 
         for (int i = 0; i < 4; i++) {
             String nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina?");
@@ -39,6 +39,26 @@ public class Main {
             disciplina.setNota(Double.parseDouble(notaDisciplina));
             aluno.getDisciplinas().add(disciplina);
         }
+
+        int escolha = JOptionPane.showConfirmDialog(null, "deseja remover uma disciplina?");
+
+        if (escolha == 0) {
+
+            StringBuilder message = new StringBuilder();
+
+            for (Disciplina disciplina : aluno.getDisciplinas()) {
+                message.append(disciplina.getDisciplina()).append("\n");
+            }
+
+            String disciplinaRemover = JOptionPane.showInputDialog("Qual a disciplina? \n" + message);
+
+            aluno.getDisciplinas().remove(Integer.parseInt(disciplinaRemover)-1);
+        }
+
+        for (Disciplina disciplina : aluno.getDisciplinas()) {
+            System.out.println(disciplina);
+        }
+
 
         System.out.println(aluno.getMediaNota());
 
