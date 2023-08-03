@@ -41,18 +41,16 @@ public class Main {
         }
 
         int escolha = JOptionPane.showConfirmDialog(null, "deseja remover uma disciplina?");
-
         if (escolha == 0) {
 
-            StringBuilder message = new StringBuilder();
+            int continuarRemover = 0;
 
-            for (Disciplina disciplina : aluno.getDisciplinas()) {
-                message.append(disciplina.getDisciplina()).append("\n");
+            while (continuarRemover == 0) {
+                String disciplinaRemover = JOptionPane.showInputDialog("Qual a disciplina? \n" + getMessage(aluno));
+                aluno.getDisciplinas().remove(Integer.parseInt(disciplinaRemover) - 1);
+
+                continuarRemover = JOptionPane.showConfirmDialog(null, "Continuar a remover?");
             }
-
-            String disciplinaRemover = JOptionPane.showInputDialog("Qual a disciplina? \n" + message);
-
-            aluno.getDisciplinas().remove(Integer.parseInt(disciplinaRemover)-1);
         }
 
         for (Disciplina disciplina : aluno.getDisciplinas()) {
@@ -62,5 +60,13 @@ public class Main {
 
         System.out.println(aluno.getMediaNota());
 
+    }
+
+    private static StringBuilder getMessage(Aluno aluno) {
+        StringBuilder message = new StringBuilder();
+        for (Disciplina disciplina : aluno.getDisciplinas()) {
+            message.append(disciplina.getDisciplina()).append("\n");
+        }
+        return message;
     }
 }
