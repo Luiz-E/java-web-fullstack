@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         Aluno aluno = new Aluno();
-//        String nome = JOptionPane.showInputDialog("Qual o nome do aluno? ");
+        String nome = JOptionPane.showInputDialog("Qual o nome do aluno? ");
 //        String idade = JOptionPane.showInputDialog("Qual a idade?");
 //        String dataNascimento = JOptionPane.showInputDialog("Qual a data de nascimento?");
 //        String rg = JOptionPane.showInputDialog("Qual o RG?");
