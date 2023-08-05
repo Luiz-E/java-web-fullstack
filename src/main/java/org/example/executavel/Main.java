@@ -63,11 +63,14 @@ public class Main {
 
         }
         for (Aluno aluno : alunos) {
-            System.out.println("Aluno: " + aluno.getNome());
-            System.out.println("Média: " + aluno.getMediaNota());
-            System.out.println("Situação: " + aluno.getAlunoAprovado());
+            if (aluno.getNome().equalsIgnoreCase("alex")) {
+                System.out.println("Aluno: " + aluno.getNome());
+                System.out.println("Média: " + aluno.getMediaNota());
+                System.out.println("Situação: " + aluno.getAlunoAprovado());
 
-            System.out.println("-------------------------------------");
+                System.out.println("-------------------------------------");
+                break;
+            }
         }
     }
 
