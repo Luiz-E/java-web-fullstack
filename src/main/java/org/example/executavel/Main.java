@@ -62,18 +62,19 @@ public class Main {
             alunos.add(aluno);
 
         }
+
         for (Aluno aluno : alunos) {
             if (aluno.getNome().equalsIgnoreCase("alex")) {
+                alunos.remove(aluno);
+            } else {
                 System.out.println("Aluno: " + aluno.getNome());
                 System.out.println("Média: " + aluno.getMediaNota());
                 System.out.println("Situação: " + aluno.getAlunoAprovado());
 
                 System.out.println("-------------------------------------");
-                break;
             }
         }
     }
-
     private static StringBuilder getMessage(Aluno aluno) {
         StringBuilder message = new StringBuilder();
         for (Disciplina disciplina : aluno.getDisciplinas()) {
