@@ -6,15 +6,15 @@ import org.example.constantes.StatusAluno;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
         List<Aluno> alunos = new ArrayList<>();
-        List<Aluno> alunosAprovados = new ArrayList<>();
-        List<Aluno> alunosReprovados = new ArrayList<>();
-        List<Aluno> alunosRecuperacao = new ArrayList<>();
+
+        HashMap<String, List<Aluno>> maps = new HashMap<>();
 
         for (int numeroAlunos = 0; numeroAlunos < 5; numeroAlunos++) {
 
@@ -65,26 +65,30 @@ public class Main {
             alunos.add(aluno);
         }
 
+        maps.put(StatusAluno.APROVADO, new ArrayList<>());
+        maps.put(StatusAluno.RECUPERACAO, new ArrayList<>());
+        maps.put(StatusAluno.REPROVADO, new ArrayList<>());
+
         for (Aluno aluno : alunos) {
             if (aluno.getAlunoAprovado().equalsIgnoreCase(StatusAluno.APROVADO)) {
-                alunosAprovados.add(aluno);
+                maps.get(StatusAluno.APROVADO).add(aluno);
             } else if (aluno.getAlunoAprovado().equalsIgnoreCase(StatusAluno.RECUPERACAO)) {
-                alunosRecuperacao.add(aluno);
+                maps.get(StatusAluno.RECUPERACAO).add(aluno);
             } else {
-                alunosReprovados.add(aluno);
+                maps.get(StatusAluno.REPROVADO).add(aluno);
             }
         }
 
         System.out.println("Alunos Aprovados:");
-        for (Aluno aluno : alunosAprovados) {
+        for (Aluno aluno : maps.get(StatusAluno.APROVADO)) {
             System.out.println(aluno.getNome());
         }
         System.out.println("Alunos em Recuperação:");
-        for (Aluno aluno : alunosRecuperacao) {
+        for (Aluno aluno : maps.get(StatusAluno.RECUPERACAO)) {
             System.out.println(aluno.getNome());
         }
         System.out.println("Alunos Reprovados:");
-        for (Aluno aluno : alunosReprovados) {
+        for (Aluno aluno : maps.get(StatusAluno.REPROVADO)) {
             System.out.println(aluno.getNome());
         }
 
