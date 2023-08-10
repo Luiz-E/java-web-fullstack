@@ -1,5 +1,7 @@
 package org.example.classes;
 
+import org.example.constantes.StatusAluno;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -130,12 +132,12 @@ public class Aluno {
         double media = getMediaNota();
         if (media >= 50) {
             if (media >= 70) {
-                return "Aluno aprovado";
+                return StatusAluno.APROVADO;
             } else {
-                return "Aluno em recuperação";
+                return StatusAluno.RECUPERACAO;
             }
         } else {
-            return "Aluno reprovado";
+            return StatusAluno.REPROVADO;
         }
     }
 
