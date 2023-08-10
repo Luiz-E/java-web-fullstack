@@ -67,6 +67,19 @@ public class Main {
 
             Aluno aluno = alunos.get(i);
 
+            if (aluno.getNome().equalsIgnoreCase("alex")) {
+                Aluno novo = new Aluno();
+                novo.setNome("Novo aluno");
+                Disciplina disciplina = new Disciplina();
+                disciplina.setDisciplina("Matemática");
+                disciplina.setNota(96);
+                novo.getDisciplinas().add(disciplina);
+
+                alunos.set(i, novo);
+
+                aluno = alunos.get(i);
+            }
+
             System.out.println("Aluno: " + aluno.getNome());
             System.out.println("Média: " + aluno.getMediaNota());
             System.out.println("Resultado: " + aluno.getAlunoAprovado());
