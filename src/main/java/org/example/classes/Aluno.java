@@ -80,23 +80,6 @@ public class Aluno extends Pessoa{
     }
 
     @Override
-    public String toString() {
-        return "Aluno{" +
-                "nome='" + nome + '\'' +
-                ", idade=" + idade +
-                ", dataNascimento='" + dataNascimento + '\'' +
-                ", registroGeral='" + registroGeral + '\'' +
-                ", numeroCpf='" + numeroCpf + '\'' +
-                ", nomeMae='" + nomeMae + '\'' +
-                ", nomePai='" + nomePai + '\'' +
-                ", dataMatricula='" + dataMatricula + '\'' +
-                ", nomeEscola='" + nomeEscola + '\'' +
-                ", serieMatriculado='" + serieMatriculado + '\'' +
-                ", disciplina=" + disciplinas +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -107,5 +90,22 @@ public class Aluno extends Pessoa{
     @Override
     public int hashCode() {
         return Objects.hash(nome, numeroCpf);
+    }
+
+    @Override
+    public String toString() {
+        return "Aluno{" +
+                "dataMatricula='" + dataMatricula + '\'' +
+                ", nomeEscola='" + nomeEscola + '\'' +
+                ", serieMatriculado='" + serieMatriculado + '\'' +
+                ", disciplinas=" + disciplinas +
+                ", nome='" + nome + '\'' +
+                ", idade=" + idade +
+                ", dataNascimento='" + dataNascimento + '\'' +
+                ", registroGeral='" + registroGeral + '\'' +
+                ", numeroCpf='" + numeroCpf + '\'' +
+                ", nomeMae='" + nomeMae + '\'' +
+                ", nomePai='" + nomePai + '\'' +
+                '}';
     }
 }
