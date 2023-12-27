@@ -108,4 +108,13 @@ public class Aluno extends Pessoa{
                 ", nomePai='" + nomePai + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean pessoaMaiorIdade() {
+        return idade >= 21;
+    }
+
+    public String msgMaiorIdade() {
+        return this.pessoaMaiorIdade() ? "Obaa aluno é maior de idade" : "Ixii vc é menor de idade";
+    }
 }
