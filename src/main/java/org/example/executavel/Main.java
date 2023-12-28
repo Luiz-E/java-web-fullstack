@@ -31,5 +31,9 @@ public class Main {
         secretario.pessoaMaiorIdade();
 
         //Pessoa pessoa = new Pessoa();
+
+        System.out.println("Salário é igual a " + aluno.salario());
+        System.out.println("Salário é igual a " + diretor.salario());
+        System.out.println("Salário é igual a " + secretario.salario());
     }
 }
