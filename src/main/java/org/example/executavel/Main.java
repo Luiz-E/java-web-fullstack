@@ -9,14 +9,16 @@ public class Main {
     public static void main(String[] args) {
 
         Aluno aluno = new Aluno();
-        aluno.setNome("Alex JDev - Trei namento");
+        aluno.setNome("Alex JDev - Treinamento");
         aluno.setIdade(16);
 
         Diretor diretor = new Diretor();
+        diretor.setNome("Egidio");
         diretor.setRegistroGeral("43243245");
         diretor.setIdade(50);
 
         Secretario secretario = new Secretario();
+        secretario.setNome("João");
         secretario.setExperiencia("Administração");
         secretario.setIdade(18);
 
@@ -35,5 +37,17 @@ public class Main {
         System.out.println("Salário é igual a " + aluno.salario());
         System.out.println("Salário é igual a " + diretor.salario());
         System.out.println("Salário é igual a " + secretario.salario());
+
+        Pessoa pessoa = new Aluno();
+        pessoa = secretario;
+
+        teste(aluno);
+        teste(diretor);
+        teste(secretario);
+        teste(pessoa);
+    }
+
+    public static void teste(Pessoa pessoa) {
+        System.out.println("Essa pessoa é demais = " + pessoa.getNome() + " e o salário é de " + pessoa.salario());
     }
 }
