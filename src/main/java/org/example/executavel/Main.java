@@ -2,6 +2,7 @@ package org.example.executavel;
 
 import org.example.classes.Aluno;
 import org.example.classes.Diretor;
+import org.example.classes.Pessoa;
 import org.example.classes.Secretario;
 
 public class Main {
@@ -28,5 +29,7 @@ public class Main {
         System.out.println(aluno.pessoaMaiorIdade() + " - " + aluno.msgMaiorIdade());
         diretor.pessoaMaiorIdade();
         secretario.pessoaMaiorIdade();
+
+        //Pessoa pessoa = new Pessoa();
     }
 }
