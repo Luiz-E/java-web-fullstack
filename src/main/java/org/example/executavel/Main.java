@@ -5,6 +5,8 @@ import org.example.classes.Diretor;
 import org.example.classes.Pessoa;
 import org.example.classes.Secretario;
 
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -45,6 +47,19 @@ public class Main {
         teste(diretor);
         teste(secretario);
         teste(pessoa);
+
+        String login = JOptionPane.showInputDialog("Informe o login");
+        String senha = JOptionPane.showInputDialog("Informe a senha");
+
+
+        secretario.setLogin(login);
+        secretario.setSenha(senha);
+
+        if (secretario.autenticar()) {
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Acesso não permitido");
+        }
     }
 
     public static void teste(Pessoa pessoa) {
