@@ -1,10 +1,35 @@
 package org.example.classes;
 
-public class Secretario extends Pessoa{
+import org.example.interfaces.PermitirAcesso;
+
+public class Secretario extends Pessoa implements PermitirAcesso {
 
     private String registro;
     private String nivelCargo;
     private String experiencia;
+    private String login;
+    private String senha;
+
+    @Override
+    public boolean autenticar() {
+        return login.equals("adm") && senha.equals("adm");
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
     public String getRegistro() {
         return registro;
