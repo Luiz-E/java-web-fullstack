@@ -4,6 +4,7 @@ import org.example.classes.Aluno;
 import org.example.classes.Diretor;
 import org.example.classes.Pessoa;
 import org.example.classes.Secretario;
+import org.example.interfaces.PermitirAcesso;
 
 import javax.swing.*;
 
@@ -51,12 +52,8 @@ public class Main {
         String login = JOptionPane.showInputDialog("Informe o login");
         String senha = JOptionPane.showInputDialog("Informe a senha");
 
-
-        secretario.setLogin(login);
-        secretario.setSenha(senha);
-
-        if (secretario.autenticar()) {
-
+        if (new Secretario().autenticar(login, senha)) {
+            JOptionPane.showMessageDialog(null, "Acesso permitido");
         } else {
             JOptionPane.showMessageDialog(null, "Acesso não permitido");
         }
