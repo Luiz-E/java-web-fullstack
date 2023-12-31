@@ -1,6 +1,7 @@
 package org.example.executavel;
 
 import org.example.classes.*;
+import org.example.classesauxiliares.FuncaoAutenticacao;
 import org.example.constantes.StatusAluno;
 import org.example.interfaces.PermitirAcesso;
 
@@ -15,9 +16,10 @@ public class Main {
         String login = JOptionPane.showInputDialog("Informe o login");
         String senha = JOptionPane.showInputDialog("Informe o login");
 
+//        FuncaoAutenticacao autenticacao = new FuncaoAutenticacao();
         PermitirAcesso permitirAcesso = new Secretario(login, senha);
 
-        if (permitirAcesso.autenticar()) {
+        if (new FuncaoAutenticacao(new Diretor(login, senha)).autenticar()) {
             List<Aluno> alunos = new ArrayList<>();
 
             HashMap<String, List<Aluno>> maps = new HashMap<>();

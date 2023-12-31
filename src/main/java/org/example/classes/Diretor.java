@@ -1,10 +1,35 @@
 package org.example.classes;
 
-public class Diretor extends Pessoa{
+import org.example.interfaces.PermitirAcesso;
+
+public class Diretor extends Pessoa implements PermitirAcesso {
 
     private String registroEducacao;
     private int tempoDirecao;
     private String titulacao;
+    String login;
+    String senha;
+
+    public Diretor(String login, String senha) {
+        this.login = login;
+        this.senha = senha;
+    }
+
+    public Diretor(){};
+
+    @Override
+    public boolean autenticar(String login, String senha) {
+        this.login = login;
+        this.senha = senha;
+        return login.equals("adm") && senha.equals("adm");
+    }
+
+    @Override
+    public boolean autenticar() {
+        return login.equals("adm") && senha.equals("adm");
+    }
+
+
 
     @Override
     public double salario() {
