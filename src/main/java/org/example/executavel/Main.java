@@ -22,7 +22,7 @@ public class Main {
             PermitirAcesso permitirAcesso = new Secretario(login, senha);
 
             if (new FuncaoAutenticacao(new Diretor(login, senha)).autenticar()) {
-                List<Aluno> alunos = null;
+                List<Aluno> alunos = new ArrayList<>();
 
                 HashMap<String, List<Aluno>> maps = new HashMap<>();
 
@@ -87,8 +87,21 @@ public class Main {
                 JOptionPane.showMessageDialog(null, "Acesso não permitido");
             }
         } catch (Exception e) {
+
+            StringBuilder saida = new StringBuilder();
+
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Erro ao processar notas");
+
+            System.out.println("Mesagem: " + e.getMessage());
+            for( StackTraceElement el : e.getStackTrace()) {
+                System.out.println(el);
+                saida.append("\nClasse de erro: ").append(el.getClassName());
+                saida.append("\nMétodo de erro: ").append(el.getMethodName());
+                saida.append("\nLinha de erro: ").append(el.getLineNumber());
+                saida.append("\nClass: ").append(e.getClass().getName());
+            }
+
+            JOptionPane.showMessageDialog(null, "Erro ao processar notas" + saida.toString());
         }
     }
 
