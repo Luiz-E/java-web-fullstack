@@ -6,6 +6,7 @@ import org.example.constantes.StatusAluno;
 import org.example.interfaces.PermitirAcesso;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +15,8 @@ public class Main {
     public static void main(String[] args) {
 
         try {
+
+            new File("arquivo.txt");
 
             String login = JOptionPane.showInputDialog("Informe o login");
             String senha = JOptionPane.showInputDialog("Informe o login");
@@ -30,7 +33,9 @@ public class Main {
 
                     Aluno aluno = new Aluno();
                     String nome = JOptionPane.showInputDialog("Qual o nome do aluno? ");
+                    String idade = JOptionPane.showInputDialog("Qual a idade? ");
                     aluno.setNome(nome);
+                    aluno.setIdade(Integer.parseInt(idade));
 
                     for (int i = 0; i < 1; i++) {
                         String nomeDisciplina = JOptionPane.showInputDialog("Nome da disciplina?");
@@ -86,7 +91,7 @@ public class Main {
             } else {
                 JOptionPane.showMessageDialog(null, "Acesso não permitido");
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
 
             StringBuilder saida = new StringBuilder();
 
@@ -101,7 +106,11 @@ public class Main {
                 saida.append("\nClass: ").append(e.getClass().getName());
             }
 
-            JOptionPane.showMessageDialog(null, "Erro ao processar notas" + saida.toString());
+            JOptionPane.showMessageDialog(null, "Erro de conversão de número" + saida);
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Opa um null pointer exception" + e.getClass());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
