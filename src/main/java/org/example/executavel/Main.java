@@ -7,16 +7,18 @@ import org.example.interfaces.PermitirAcesso;
 
 import javax.swing.*;
 import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
         try {
-
-            new File("arquivo.txt");
+            File file = new File("./arquivo.txt");
+            Scanner sc = new Scanner(file);
 
             String login = JOptionPane.showInputDialog("Informe o login");
             String senha = JOptionPane.showInputDialog("Informe o login");
@@ -111,6 +113,7 @@ public class Main {
             JOptionPane.showMessageDialog(null, "Opa um null pointer exception" + e.getClass());
         } catch (Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro inesperado " + e.getClass().getName());
         }
     }
 
