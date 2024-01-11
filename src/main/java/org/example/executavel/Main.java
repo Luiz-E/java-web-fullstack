@@ -3,10 +3,12 @@ package org.example.executavel;
 import org.example.classes.*;
 import org.example.classesauxiliares.FuncaoAutenticacao;
 import org.example.constantes.StatusAluno;
+import org.example.excecao.ExcecaoProcessarNota;
 import org.example.interfaces.PermitirAcesso;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,9 +18,16 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+
+
         try {
+            lerArquivo();
+//            try {
 //            File file = new File("./arquivo.txt");
 //            Scanner sc = new Scanner(file);
+//            } catch (FileNotFoundException e) {
+//               throw new ExcecaoProcessarNota(e.getMessage());
+//            }
 
             String login = JOptionPane.showInputDialog("Informe o login");
             String senha = JOptionPane.showInputDialog("Informe o login");
@@ -111,9 +120,9 @@ public class Main {
             JOptionPane.showMessageDialog(null, "Erro de conversão de número" + saida);
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Opa um null pointer exception" + e.getClass());
-        } catch (Exception e) {
+        } catch (ExcecaoProcessarNota e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Erro inesperado " + e.getClass().getName());
+            JOptionPane.showMessageDialog(null, "Erro da exceção customizada " + e.getClass().getName());
         } finally {
             JOptionPane.showMessageDialog(null, "Obrigado por aprender Java comigo!");
         }
@@ -125,6 +134,15 @@ public class Main {
             message.append(disciplina.getDisciplina()).append("\n");
         }
         return message;
+    }
+
+    public static void lerArquivo() throws ExcecaoProcessarNota {
+        try {
+            File fil = new File("./arquivo.txt");
+            Scanner sc = new Scanner(fil);
+        } catch (FileNotFoundException e) {
+            throw new ExcecaoProcessarNota(e.getMessage());
+        }
     }
 
     public static void teste(Pessoa pessoa) {
