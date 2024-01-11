@@ -17,8 +17,8 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            File file = new File("./arquivo.txt");
-            Scanner sc = new Scanner(file);
+//            File file = new File("./arquivo.txt");
+//            Scanner sc = new Scanner(file);
 
             String login = JOptionPane.showInputDialog("Informe o login");
             String senha = JOptionPane.showInputDialog("Informe o login");
@@ -31,7 +31,7 @@ public class Main {
 
                 HashMap<String, List<Aluno>> maps = new HashMap<>();
 
-                for (int numeroAlunos = 0; numeroAlunos < 2; numeroAlunos++) {
+                for (int numeroAlunos = 0; numeroAlunos < 1; numeroAlunos++) {
 
                     Aluno aluno = new Aluno();
                     String nome = JOptionPane.showInputDialog("Qual o nome do aluno? ");
@@ -114,6 +114,8 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro inesperado " + e.getClass().getName());
+        } finally {
+            JOptionPane.showMessageDialog(null, "Obrigado por aprender Java comigo!");
         }
     }
 
