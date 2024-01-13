@@ -102,7 +102,7 @@ public class Main {
             } else {
                 JOptionPane.showMessageDialog(null, "Acesso não permitido");
             }
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
 
             StringBuilder saida = new StringBuilder();
 
@@ -118,11 +118,6 @@ public class Main {
             }
 
             JOptionPane.showMessageDialog(null, "Erro de conversão de número" + saida);
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Opa um null pointer exception" + e.getClass());
-        } catch (ExcecaoProcessarNota e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Erro da exceção customizada " + e.getClass().getName());
         } finally {
             JOptionPane.showMessageDialog(null, "Obrigado por aprender Java comigo!");
         }
@@ -136,13 +131,9 @@ public class Main {
         return message;
     }
 
-    public static void lerArquivo() throws ExcecaoProcessarNota {
-        try {
-            File fil = new File("./arquivo.txt");
-            Scanner sc = new Scanner(fil);
-        } catch (FileNotFoundException e) {
-            throw new ExcecaoProcessarNota(e.getMessage());
-        }
+    public static void lerArquivo() throws FileNotFoundException {
+        File fil = new File("./arquivo.txt");
+        Scanner sc = new Scanner(fil);
     }
 
     public static void teste(Pessoa pessoa) {
