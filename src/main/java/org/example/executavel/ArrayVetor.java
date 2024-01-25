@@ -1,14 +1,18 @@
 package org.example.executavel;
 
+import javax.swing.*;
 import java.util.Arrays;
 
 public class ArrayVetor {
     public static void main(String[] args) {
-        double[] notas = new double[5];
-        notas[0] = 7.8;
-        notas[1] = 8.7;
-        notas[2] = 9.7;
-        notas[3] = 9.9;
+
+        String posicoes = JOptionPane.showInputDialog("Quantas posiçẽos o array deve ter?");
+        double[] notas = new double[Integer.parseInt(posicoes)];
+
+        for (int i = 0; i < notas.length; i++) {
+            String valor = JOptionPane.showInputDialog("Qual o valor da posição %d?".formatted(i+1));
+            notas[i] = Double.parseDouble(valor);
+        }
 
         System.out.println(notas);
         System.out.println(Arrays.toString(notas));
