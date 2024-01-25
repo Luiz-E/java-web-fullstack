@@ -6,18 +6,12 @@ import java.util.Arrays;
 public class ArrayVetor {
     public static void main(String[] args) {
 
-        String posicoes = JOptionPane.showInputDialog("Quantas posiçẽos o array deve ter?");
-        double[] notas = new double[Integer.parseInt(posicoes)];
+//        double[] valores = new double[5];
+//        double[] valores = {9.5, 8.9, 5.8, 100.8};
+        String[] valores = {"alex", "90", "Curso de Java", "contato@jdevtreinamento.com.br"};
 
-        for (int i = 0; i < notas.length; i++) {
-            String valor = JOptionPane.showInputDialog("Qual o valor da posição %d?".formatted(i+1));
-            notas[i] = Double.parseDouble(valor);
-        }
-
-        System.out.println(notas);
-        System.out.println(Arrays.toString(notas));
-        for (int i = 0; i < notas.length; i++) {
-            System.out.printf("Nota %d: %.2f\n", i+1, notas[i]);
+        for (int i = 0; i < valores.length; i++) {
+            System.out.printf("Valores[%d]: %s%n", i, valores[i]);
         }
     }
 }
