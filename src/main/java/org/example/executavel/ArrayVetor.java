@@ -3,6 +3,8 @@ package org.example.executavel;
 import org.example.classes.Aluno;
 import org.example.classes.Disciplina;
 
+import java.util.Arrays;
+
 public class ArrayVetor {
     public static void main(String[] args) {
         Aluno aluno = new Aluno();
@@ -20,5 +22,13 @@ public class ArrayVetor {
 
         aluno.getDisciplinas().add(disciplina);
         aluno.getDisciplinas().add(disciplina2);
+
+        System.out.printf("Aluno: %s, inscrito no curso: %s%n", aluno.getNome(), aluno.getNomeEscola());
+        for (Disciplina disc : aluno.getDisciplinas()) {
+            System.out.println("---------- Disciplina ----------");
+            System.out.printf("Disciplina: %s%n", disc.getDisciplina());
+            System.out.printf("Notas: %s%n", Arrays.toString(disc.getNota()).replace(",", " -"));
+        }
+        System.out.println("--------------------------------");
     }
 }
