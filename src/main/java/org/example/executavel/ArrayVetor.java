@@ -1,17 +1,24 @@
 package org.example.executavel;
 
-import javax.swing.*;
-import java.util.Arrays;
+import org.example.classes.Aluno;
+import org.example.classes.Disciplina;
 
 public class ArrayVetor {
     public static void main(String[] args) {
+        Aluno aluno = new Aluno();
+        aluno.setNome("Alex");
+        aluno.setNomeEscola("JDev Treinamento");
 
-//        double[] valores = new double[5];
-//        double[] valores = {9.5, 8.9, 5.8, 100.8};
-        String[] valores = {"alex", "90", "Curso de Java", "contato@jdevtreinamento.com.br"};
+        Disciplina disciplina = new Disciplina();
+        disciplina.setDisciplina("Curso de Java");
+        double[] notas = {8.8, 9.7, 7.7, 6.8};
+        disciplina.setNota(notas);
 
-        for (int i = 0; i < valores.length; i++) {
-            System.out.printf("Valores[%d]: %s%n", i, valores[i]);
-        }
+        Disciplina disciplina2 = new Disciplina();
+        disciplina2.setDisciplina(("Lógica de programação"));
+        disciplina2.setNota(new double[]{4,8,9,7});
+
+        aluno.getDisciplinas().add(disciplina);
+        aluno.getDisciplinas().add(disciplina2);
     }
 }
