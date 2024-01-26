@@ -61,7 +61,7 @@ public class Aluno extends Pessoa{
         //return disciplinas.stream().mapToDouble(Disciplina::getNota).average().getAsDouble();
         double media = 0;
         for (Disciplina disciplina : disciplinas) {
-            media += disciplina.getNota();
+            media += disciplina.getMediaNotas();
         }
         return media / disciplinas.size();
     }
