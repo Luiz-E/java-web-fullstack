@@ -7,9 +7,9 @@ import java.util.Arrays;
 
 public class ArrayVetor {
     public static void main(String[] args) {
-        Aluno aluno = new Aluno();
-        aluno.setNome("Alex");
-        aluno.setNomeEscola("JDev Treinamento");
+        Aluno aluno1 = new Aluno();
+        aluno1.setNome("Alex");
+        aluno1.setNomeEscola("JDev Treinamento");
 
         Disciplina disciplina = new Disciplina();
         disciplina.setDisciplina("Curso de Java");
@@ -20,43 +20,37 @@ public class ArrayVetor {
         disciplina2.setDisciplina(("Lógica de programação"));
         disciplina2.setNota(new double[]{4,8,9,7});
 
-        aluno.getDisciplinas().add(disciplina);
-        aluno.getDisciplinas().add(disciplina2);
+        aluno1.getDisciplinas().add(disciplina);
+        aluno1.getDisciplinas().add(disciplina2);
 
-        System.out.printf("Aluno: %s, inscrito no curso: %s%n", aluno.getNome(), aluno.getNomeEscola());
-        for (Disciplina disc : aluno.getDisciplinas()) {
-            System.out.println("---------- Disciplina ----------");
-            System.out.printf("Disciplina: %s%n", disc.getDisciplina());
-            //System.out.printf("Notas: %s%n", Arrays.toString(disc.getNota()).replace(",", " -").replaceAll("[\\[\\]]", ""));
-            //System.out.printf("Maior nota da disciplina %s é: %.2f%n", disc.getDisciplina(), Arrays.stream(disc.getNota()).max().orElse(0));
-            //System.out.printf("Menor nota da disciplina %s é: %.2f%n", disc.getDisciplina(), Arrays.stream(disc.getNota()).min().orElse(0));
-            System.out.print("Notas: ");
+        Aluno aluno2 = new Aluno();
+        aluno2.setNome("Alex");
+        aluno2.setNomeEscola("JDev Treinamento");
 
-            for (int i = 0; i < disc.getNota().length; i++) {
-                System.out.print(disc.getNota()[i]);
-                if (i != disc.getNota().length - 1) {
-                    System.out.print(" - ");
-                } else {
-                    System.out.println();
-                }
-            }
-            double notaMaxima = disc.getNota()[0];
-            for (double nota : disc.getNota()) {
-                if (nota > notaMaxima) {
-                    notaMaxima = nota;
-                }
-            }
-            System.out.println("A maior nota da discipilina " + disc.getDisciplina() + " é: " + notaMaxima);
-            double notaMinima = disc.getNota()[0];
-            for (int i = 0; i < disc.getNota().length; i++) {
+        Disciplina disciplina3 = new Disciplina();
+        disciplina3.setDisciplina("Curso de Java");
+        double[] notas2 = {8.8, 9.7, 7.7, 6.8};
+        disciplina3.setNota(notas2);
+
+        Disciplina disciplina4 = new Disciplina();
+        disciplina4.setDisciplina(("Lógica de programação"));
+        disciplina4.setNota(new double[]{4,8,9,7});
+
+        aluno2.getDisciplinas().add(disciplina3);
+        aluno2.getDisciplinas().add(disciplina4);
+
+        Aluno[] alunosArray = new Aluno[2];
+        alunosArray[0] = aluno1;
+        alunosArray[1] = aluno2;
+
+        for (Aluno aluno : alunosArray) {
+            System.out.println("Nome do aluno: " + aluno.getNome());
+            for (Disciplina disc : aluno.getDisciplinas()) {
+                System.out.println("Nome da disciplina: " + disc.getDisciplina());
                 for (double nota : disc.getNota()) {
-                    if (nota < notaMinima) {
-                        notaMinima = nota;
-                    }
+                    System.out.println("Nota: " + nota);
                 }
             }
-            System.out.println("A menor nota da discipilina " + disc.getDisciplina() + " é: " + notaMinima);
         }
-        System.out.println("--------------------------------");
     }
 }
