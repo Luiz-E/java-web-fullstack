@@ -27,7 +27,25 @@ public class ArrayVetor {
         for (Disciplina disc : aluno.getDisciplinas()) {
             System.out.println("---------- Disciplina ----------");
             System.out.printf("Disciplina: %s%n", disc.getDisciplina());
-            System.out.printf("Notas: %s%n", Arrays.toString(disc.getNota()).replace(",", " -"));
+            //System.out.printf("Notas: %s%n", Arrays.toString(disc.getNota()).replace(",", " -").replaceAll("[\\[\\]]", ""));
+            //System.out.printf("Maior nota da disciplina %s é: %.2f%n", disc.getDisciplina(), Arrays.stream(disc.getNota()).max().orElse(0));
+            System.out.print("Notas: ");
+
+            for (int i = 0; i < disc.getNota().length; i++) {
+                System.out.print(disc.getNota()[i]);
+                if (i != disc.getNota().length - 1) {
+                    System.out.print(" - ");
+                } else {
+                    System.out.println();
+                }
+            }
+            double notaMaxima = disc.getNota()[0];
+            for (double nota : disc.getNota()) {
+                if (nota > notaMaxima) {
+                    notaMaxima = nota;
+                }
+            }
+            System.out.println("A maior nota da discipilina " + disc.getDisciplina() + " é: " + notaMaxima);
         }
         System.out.println("--------------------------------");
     }
