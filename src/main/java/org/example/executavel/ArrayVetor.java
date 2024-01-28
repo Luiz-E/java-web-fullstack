@@ -29,6 +29,7 @@ public class ArrayVetor {
             System.out.printf("Disciplina: %s%n", disc.getDisciplina());
             //System.out.printf("Notas: %s%n", Arrays.toString(disc.getNota()).replace(",", " -").replaceAll("[\\[\\]]", ""));
             //System.out.printf("Maior nota da disciplina %s é: %.2f%n", disc.getDisciplina(), Arrays.stream(disc.getNota()).max().orElse(0));
+            //System.out.printf("Menor nota da disciplina %s é: %.2f%n", disc.getDisciplina(), Arrays.stream(disc.getNota()).min().orElse(0));
             System.out.print("Notas: ");
 
             for (int i = 0; i < disc.getNota().length; i++) {
@@ -46,6 +47,15 @@ public class ArrayVetor {
                 }
             }
             System.out.println("A maior nota da discipilina " + disc.getDisciplina() + " é: " + notaMaxima);
+            double notaMinima = disc.getNota()[0];
+            for (int i = 0; i < disc.getNota().length; i++) {
+                for (double nota : disc.getNota()) {
+                    if (nota < notaMinima) {
+                        notaMinima = nota;
+                    }
+                }
+            }
+            System.out.println("A menor nota da discipilina " + disc.getDisciplina() + " é: " + notaMinima);
         }
         System.out.println("--------------------------------");
     }
