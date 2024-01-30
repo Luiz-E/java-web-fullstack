@@ -12,7 +12,18 @@ public class AulaThread {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("Executando rotina.");
+                System.out.println("Executando rotina 1.");
+            }
+        }).start();
+
+        new Thread(() -> {
+            for (int i = 0; i <  10; i++) {
+                try {
+                    Thread.sleep(1300);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("Executando rotina 2.");
             }
         }).start();
 
