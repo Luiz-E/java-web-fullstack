@@ -2,6 +2,8 @@ package org.example.thread;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class TelaTimeThread extends JDialog {
 
@@ -12,6 +14,19 @@ public class TelaTimeThread extends JDialog {
     private JTextField mostraTempo2 = new JTextField();
     private JButton jButton = new JButton("Start");
     private JButton jButton2 = new JButton("Stop");
+
+    private Runnable thread1 = () -> {
+        while (true) {
+            mostraTempo.setText(new SimpleDateFormat("dd/MM/yyyy hh:mm.ss")
+                    .format(Calendar.getInstance().getTime()));
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+    private Thread thread1Time;
     public TelaTimeThread() {
         setTitle("Minha tela de tempo com Thread");
         setSize(new Dimension(240, 240));
@@ -52,6 +67,15 @@ public class TelaTimeThread extends JDialog {
         jButton2.setPreferredSize(new Dimension(92, 25));
         gridBagConstraints.gridx++;
         jPanel.add(jButton2, gridBagConstraints);
+
+        jButton.addActionListener((e) -> {
+            thread1Time = new Thread(thread1);
+            thread1Time.start();
+        });
+
+        jButton2.addActionListener(e -> {
+            thread1Time.stop();
+        });
 
         add(jPanel, BorderLayout.WEST);
         setVisible(true);
