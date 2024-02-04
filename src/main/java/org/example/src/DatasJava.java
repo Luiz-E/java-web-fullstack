@@ -2,23 +2,19 @@ package org.example.src;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
+
 
 public class DatasJava {
     public static void main(String[] args) throws ParseException {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date dataVencimentoBoleto = simpleDateFormat.parse("10/03/2024");
-        Date dataAtual = simpleDateFormat.parse("11/03/2024");
-//        if (dataVencimentoBoleto.after(dataAtual)) {
-//            System.out.println("Não venceu");
-//        } else {
-//            System.out.println("Venceu");
-//        }
-
-        if (dataVencimentoBoleto.before(dataAtual)) {
-            System.out.println("Venceu");
-        } else {
-            System.out.println("Não venceu");
-        }
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        calendar.setTime(simpleDateFormat.parse("10-03-2024"));
+        calendar.add(Calendar.DAY_OF_MONTH, -15);
+        System.out.println(simpleDateFormat.format(calendar.getTime()));
+        calendar.add(Calendar.MONTH, 2);
+        System.out.println(simpleDateFormat.format(calendar.getTime()));
+        calendar.add(Calendar.YEAR, 4);
+        System.out.println(simpleDateFormat.format(calendar.getTime()));
     }
 }
