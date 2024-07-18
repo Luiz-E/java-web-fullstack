@@ -1,20 +1,15 @@
 package org.example.src;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class DatasJava {
-    public static void main(String[] args) throws ParseException {
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        calendar.setTime(simpleDateFormat.parse("10-03-2024"));
-        calendar.add(Calendar.DAY_OF_MONTH, -15);
-        System.out.println(simpleDateFormat.format(calendar.getTime()));
-        calendar.add(Calendar.MONTH, 2);
-        System.out.println(simpleDateFormat.format(calendar.getTime()));
-        calendar.add(Calendar.YEAR, 4);
-        System.out.println(simpleDateFormat.format(calendar.getTime()));
+    public static void main(String[] args){
+        long dias = ChronoUnit.DAYS.between(LocalDate.parse("2024-07-21"), LocalDate.now());
+        long semanas = ChronoUnit.WEEKS.between(LocalDate.parse("2024-07-21"), LocalDate.now());
+        long anoDias = ChronoUnit.YEARS.between(LocalDate.parse("2025-02-04"), LocalDate.now());
+        System.out.println(dias);
+        System.out.println(semanas);
+        System.out.println(anoDias);
     }
 }
