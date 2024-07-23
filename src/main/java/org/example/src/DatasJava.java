@@ -1,26 +1,26 @@
 package org.example.src;
 
-
 import java.time.LocalDate;
-import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class DatasJava {
     public static void main(String[] args) {
 
-        LocalDate dataAntiga = LocalDate.of(2011, 2, 3);
-        LocalDate dataNova = LocalDate.of(2022, 5, 12);
+//        LocalDate dataBase = LocalDate.now();
+//        System.out.println(dataBase.plusDays(5));
+//        System.out.println(dataBase.plusYears(2));
+//        System.out.println(dataBase.plusMonths(1));
+//        System.out.println(dataBase.plus(4, ChronoUnit.DECADES));
+//
+//        System.out.println(dataBase.minusDays(5));
+//        System.out.println(dataBase.minusMonths(4));
+//        System.out.println(dataBase.minusYears(1));
+//        System.out.println(dataBase.minus(5, ChronoUnit.CENTURIES));
 
-        System.out.println(dataAntiga.isAfter(dataNova));
-        System.out.println(dataAntiga.isBefore(dataNova));
-        System.out.println(dataAntiga.isEqual(dataNova));
-
-        System.out.println("---------------------------------------------");
-        Period period = Period.between(dataAntiga, dataNova);
-
-        System.out.println(period.getDays());
-        System.out.println(period.getMonths());
-        System.out.println(period.getYears());
-        System.out.println("Diferença de " + period.getYears() + " anos, " + period.getMonths() +  " meses e " +  period.getDays() + " dias");
-        System.out.println(period.toTotalMonths());
+        LocalDate date = LocalDate.now();
+        for (int i = 0; i < 12; i++) {
+            System.out.println("Vencimento: " + date.plusMonths(1 + i).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        }
     }
 }
