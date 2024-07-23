@@ -1,22 +1,22 @@
 package org.example.src;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.time.Duration;
+import java.time.Instant;
 
 public class DatasJava {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        Instant inicio = Instant.now();
 
-        LocalDate localDate = LocalDate.now();
-        System.out.println(localDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        Thread.sleep(2000);
+        Instant iFinal = Instant.now();
 
-        System.out.println("Dia da semana: " + localDate.getDayOfWeek());
-        System.out.println("Dia da semana: " + localDate.getDayOfWeek().ordinal());
-        System.out.println("Dia da semana: " + localDate.getDayOfWeek().name());
-
-        System.out.println("Dia do mẽs: " + localDate.getDayOfMonth());
-        System.out.println("Dia do ano: " + localDate.getDayOfYear());
-        System.out.println("Mês: " + localDate.getMonth());
-        System.out.println("Mês: " + localDate.getMonthValue());
-        System.out.println("Ano: " + localDate.getYear());
+        Duration duracao = Duration.between(inicio, iFinal);
+        System.out.println("Duração: " + duracao);
+        System.out.println("Duração em nanossegundos: " + duracao.toNanos());
+        System.out.println("Duração em minutos: " + duracao.toMinutes());
+        System.out.println("Duração em horas: " + duracao.toHours());
+        System.out.println("Duração em dias: " + duracao.toDays());
+        System.out.println("Duração em segundos: " + duracao.toSeconds());
+        System.out.println("Duração em milisegundos: " + duracao.toMillis());
     }
 }
