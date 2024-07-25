@@ -1,13 +1,21 @@
 package org.example.src;
 
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Arquivos {
     public static void main(String[] args) throws IOException {
+        File file = new File("./src/main/java/org/example/src/arquivo_excel.xls");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+
         Pessoa pessoa1 = new Pessoa();
         pessoa1.setEmail("pessoa1@gmail.com");
         pessoa1.setIdade(50);
@@ -23,30 +31,29 @@ public class Arquivos {
 
         List<Pessoa> pessoas = new ArrayList<>(List.of(pessoa1, pessoa2, pessoa3));
 
-        File arquivo = new File("./src/main/java/org/example/src/arquivo.csv");
-        if (!arquivo.exists()) {
-            arquivo.createNewFile();
+        HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
+        HSSFSheet linhasPessoas = hssfWorkbook.createSheet("Planilha de pessoas JDev Treinamento");
+
+        int numeroLinha = 0;
+        for (Pessoa pessoa : pessoas) {
+            Row row = linhasPessoas.createRow(numeroLinha++);
+
+            int numeroCell = 0;
+
+            Cell cellNome = row.createCell(numeroCell++);
+            cellNome.setCellValue(pessoa.getNome());
+
+            Cell cellEmail = row.createCell(numeroCell++);
+            cellEmail.setCellValue(pessoa.getEmail());
+
+            Cell cellIdade = row.createCell(numeroCell);
+            cellIdade.setCellValue(pessoa.getIdade());
         }
 
-        FileWriter writer = new FileWriter(arquivo);
-
-        for (Pessoa p : pessoas) {
-            writer.write(p.getNome() + ";" + p.getEmail() + ";" + p.getIdade() + "\n");
-        }
-
-
-        FileInputStream input =
-                new FileInputStream("./src/main/java/org/example/src/arquivo.txt");
-        Scanner lerArquivo = new Scanner(input, StandardCharsets.UTF_8);
-        while(lerArquivo.hasNext()) {
-            String linha = lerArquivo.nextLine();
-            if (linha != null && !linha.isEmpty()) {
-                System.out.println(linha);
-            }
-        }
-        lerArquivo.close();
-
-        writer.flush();
-        writer.close();
+        FileOutputStream saida = new FileOutputStream(file);
+        hssfWorkbook.write(saida);
+        saida.flush();
+        saida.close();
+        System.out.println("Planilha criada. ");
     }
 }
