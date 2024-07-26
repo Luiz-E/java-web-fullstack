@@ -1,36 +1,27 @@
 package org.example.src;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
-import java.io.FileWriter;
+import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Json {
     public static void main(String[] args) throws IOException {
-        Usuario usuario1 = new Usuario();
-        usuario1.setNome("João");
-        usuario1.setCpf("432543252");
-        usuario1.setLogin("joao");
-        usuario1.setSenha("123456");
+        FileReader reader = new FileReader("./src/main/java/org/example/src/users.json");
+        JsonArray array = (JsonArray) JsonParser.parseReader(reader);
 
-        Usuario usuario2 = new Usuario();
-        usuario2.setNome("André");
-        usuario2.setCpf("4513257879");
-        usuario2.setLogin("andre");
-        usuario2.setSenha("654321");
+        List<Usuario> usuarios = new ArrayList<>();
 
-        List<Usuario> usuarios = new ArrayList<>(List.of(usuario1, usuario2));
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        //String jsonUser = new Gson().toJson(usuarios);
-        String jsonUser = gson.toJson(usuarios);
+        for (JsonElement jsonElement : array) {
+            Usuario usuario = new Gson().fromJson(jsonElement, Usuario.class);
+            usuarios.add(usuario);
+        }
 
-        FileWriter writer = new FileWriter("./src/main/java/org/example/src/users.json", StandardCharsets.UTF_8);
-        writer.write(jsonUser);
-        writer.flush();
-        writer.close();
+        System.out.println(usuarios);
     }
 }
