@@ -5,41 +5,29 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.*;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Scanner;
 
 public class Arquivos {
     public static void main(String[] args) throws IOException {
-        FileInputStream file = new FileInputStream("./src/main/java/org/example/src/arquivo_excel.xls");
-        HSSFWorkbook hssfWorkbook = new HSSFWorkbook(file);
-        HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(0);
+        File file =  new File("./src/main/java/org/example/src/arquivo_excel.xls");
+        FileInputStream fileInput = new FileInputStream(file);
+        HSSFWorkbook hssfWorkbook = new HSSFWorkbook(fileInput);
+        HSSFSheet sheet = hssfWorkbook.getSheetAt(0);
 
-        Iterator<Row> iterator = hssfSheet.iterator();
-        List<Pessoa> pessoas = new ArrayList<>();
-        while (iterator.hasNext()) {
-            Pessoa pessoa = new Pessoa();
-            Row linha = iterator.next();
-            Iterator<Cell> cellIterator = linha.iterator();
-            while (cellIterator.hasNext()) {
-                Cell cell = cellIterator.next();
-
-                switch (cell.getColumnIndex()) {
-                    case 0:
-                        pessoa.setNome(cell.getStringCellValue());
-                        break;
-                    case 1:
-                        pessoa.setEmail(cell.getStringCellValue());
-                        break;
-                    case 2:
-                        pessoa.setIdade(Double.valueOf(cell.getNumericCellValue()).intValue());
-                }
-            }
-            pessoas.add(pessoa);
+        for (Row row : sheet) {
+            int cellNumber = row.getPhysicalNumberOfCells();
+            Cell cell = row.createCell(cellNumber);
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Insira o salário: ");
+            double salario = sc.nextDouble();
+            cell.setCellValue(salario);
         }
-        file.close();
-        System.out.println(pessoas);
+        FileOutputStream out = new FileOutputStream(file);
+        hssfWorkbook.write(out);
+        out.flush();
+        out.close();
+        fileInput.close();
     }
 }
