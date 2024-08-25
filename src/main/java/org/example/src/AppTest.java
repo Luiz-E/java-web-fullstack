@@ -1,8 +1,8 @@
 package org.example.src;
 
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Authenticator;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.*;
 import java.util.Properties;
 
@@ -43,7 +43,15 @@ public class AppTest {
                     return new PasswordAuthentication(userName(),password());
                 }
             });
-            System.out.println(session);
+
+            Address[] toUser = InternetAddress.parse("luizedumartins21@gmail.com");
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(userName()));
+            message.setRecipients(Message.RecipientType.TO, toUser);
+            message.setSubject("Chegou o e-mail enviando com java");
+            message.setText("Olá mundo");
+
+            Transport.send(message);
         } catch (Exception e) {
             e.printStackTrace();
         }
