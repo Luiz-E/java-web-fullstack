@@ -30,6 +30,7 @@ public class AppTest {
         loadEnv(); // criado por questões de segurança
         try {
             Properties props = new Properties();
+            props.put("mail.smtp.ssl.trust", "*");
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.starttls", "true");
             props.put("mail.smtp.host", "smtp.gmail.com");
@@ -46,7 +47,7 @@ public class AppTest {
 
             Address[] toUser = InternetAddress.parse("luizedumartins21@gmail.com");
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(userName()));
+            message.setFrom(new InternetAddress(userName(), "Luiz "));
             message.setRecipients(Message.RecipientType.TO, toUser);
             message.setSubject("Chegou o e-mail enviando com java");
             message.setText("Olá mundo");
