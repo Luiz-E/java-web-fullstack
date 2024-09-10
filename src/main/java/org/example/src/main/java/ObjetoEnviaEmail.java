@@ -1,8 +1,15 @@
 package org.example.src.main.java;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.Properties;
 
 import static org.example.src.main.java.VariaveisEnv.*;
@@ -54,4 +61,16 @@ public class ObjetoEnviaEmail {
 
         Transport.send(message);
     }
+
+    private FileInputStream simuladorPdf() throws Exception{
+        Document document = new Document();
+        File file = new File("fileanexo.pdf");
+        file.createNewFile();
+        PdfWriter.getInstance(document, new FileOutputStream(file));
+        document.open();
+        document.add(new Paragraph("Conteúdo do PDF anexo com java mail, esse texto é do PDF"));
+        document.close();
+        return new FileInputStream(file);
+    }
+
 }
