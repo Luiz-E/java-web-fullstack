@@ -35,6 +35,6 @@ public class AppTest {
                 "Chegou o e-mail enviando com java",
                 stringBuilderTextoEmail.toString()
         );
-        enviaEmail.enviarEmail(true);
+        enviaEmail.enviarEmailAnexo(true);
     }
 }

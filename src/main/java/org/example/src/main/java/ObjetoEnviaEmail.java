@@ -4,9 +4,13 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import javax.activation.DataHandler;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.util.ByteArrayDataSource;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -58,6 +62,51 @@ public class ObjetoEnviaEmail {
         } else {
             message.setText(conteudoEmail);
         }
+
+        Transport.send(message);
+    }
+
+    public void enviarEmailAnexo(boolean envioHtml) throws Exception {
+        loadEnv();
+
+        Properties props = new Properties();
+        props.put("mail.smtp.ssl.trust", "*");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "465");
+        props.put("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(userName(),password());
+            }
+        });
+
+        Address[] toUser = InternetAddress.parse(listaDestinatarios);
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(userName(), nomeRemetente));
+        message.setRecipients(Message.RecipientType.TO, toUser);
+        message.setSubject(assuntoEmail);
+
+        MimeBodyPart corpoEmail = new MimeBodyPart();
+
+        if (envioHtml) {
+            corpoEmail.setContent(conteudoEmail, "text/html; charset=utf-8");
+        } else {
+            corpoEmail.setText(conteudoEmail);
+        }
+
+        MimeBodyPart anexoEmail = new MimeBodyPart();
+        anexoEmail.setDataHandler((new DataHandler(new ByteArrayDataSource(simuladorPdf(), "application/pdf"))));
+        anexoEmail.setFileName("anexoEmail.pdf");
+        Multipart multipart = new MimeMultipart();
+        multipart.addBodyPart(corpoEmail);
+        multipart.addBodyPart(anexoEmail);
+
+        message.setContent(multipart);
 
         Transport.send(message);
     }
