@@ -14,6 +14,8 @@ import javax.mail.util.ByteArrayDataSource;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import static org.example.src.main.java.VariaveisEnv.*;
@@ -99,13 +101,22 @@ public class ObjetoEnviaEmail {
             corpoEmail.setText(conteudoEmail);
         }
 
-        MimeBodyPart anexoEmail = new MimeBodyPart();
-        anexoEmail.setDataHandler((new DataHandler(new ByteArrayDataSource(simuladorPdf(), "application/pdf"))));
-        anexoEmail.setFileName("anexoEmail.pdf");
+        List<FileInputStream> arquivos = new ArrayList<>();
+        arquivos.add(simuladorPdf());
+        arquivos.add(simuladorPdf());
+        arquivos.add(simuladorPdf());
+        arquivos.add(simuladorPdf());
+
         Multipart multipart = new MimeMultipart();
         multipart.addBodyPart(corpoEmail);
-        multipart.addBodyPart(anexoEmail);
 
+        for (int i = 0; i < arquivos.size(); i++) {
+
+            MimeBodyPart anexoEmail = new MimeBodyPart();
+            anexoEmail.setDataHandler((new DataHandler(new ByteArrayDataSource(arquivos.get(i), "application/pdf"))));
+            anexoEmail.setFileName("anexo "+i+".pdf");
+            multipart.addBodyPart(anexoEmail);
+    }
         message.setContent(multipart);
 
         Transport.send(message);
