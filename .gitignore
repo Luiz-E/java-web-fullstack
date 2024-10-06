@@ -39,3 +39,4 @@ build/
 /src/main/resources/.env
 /fileanexo.pdf
 /.smarttomcat/
+/.idea/inspectionProfiles/Project_Default.xml
