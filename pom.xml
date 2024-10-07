@@ -8,6 +8,11 @@
     <artifactId>orientacao_a_objetos</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.4</version>
+        </dependency>
 
     </dependencies>
     <properties>
