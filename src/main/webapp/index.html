@@ -18,7 +18,7 @@
         </style>
     </head>
     <body>
-        <form action="">
+        <form action="" method="post" onsubmit="return validarDados()">
             <table>
                  <tr>
                     <td><label for="nome">Nome:</label></td>
@@ -37,5 +37,28 @@
                 </tr>
             </table>
         </form>
+    <script type="text/javascript">
+        function validarDados() {
+            let nome = document.getElementById("nome").value;
+            if (nome == '') {
+                alert("Informe o nome.");
+                return false;
+            }
+
+            let login = document.getElementById("login").value;
+            if (login == '') {
+                alert("Informe o login.");
+                return false;
+            }
+
+            let senha = document.getElementById("senha").value;
+            if (senha == '') {
+                alert("Informe a senha.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
     </body>
 </html>
