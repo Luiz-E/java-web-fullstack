@@ -72,4 +72,16 @@ public class UserPosDAO {
         }
         return user;
     }
+
+    public void update(UserposJava userUpdate) {
+        String sql = "update userposjava set nome = ? where id = " + userUpdate.getId();
+        try {
+            PreparedStatement updateStatement = conn.prepareStatement(sql);
+            updateStatement.setString(1, userUpdate.getNome());
+            updateStatement.execute();
+            conn.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

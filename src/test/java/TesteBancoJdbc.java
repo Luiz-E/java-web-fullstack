@@ -41,4 +41,12 @@ public class TesteBancoJdbc {
         System.out.println(user);
     }
 
+    @Test
+    public void testUpdate() {
+        UserPosDAO userPosDAO = new UserPosDAO();
+
+        UserposJava user = userPosDAO.buscar(2L);
+        user.setNome("Teste Atualizado");
+        userPosDAO.update(user);
+    }
 }
