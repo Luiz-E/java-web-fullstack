@@ -3,6 +3,8 @@ import org.example.dao.UserPosDAO;
 import org.example.model.UserposJava;
 import org.junit.Test;
 
+import java.util.List;
+
 public class TesteBancoJdbc {
 
     @Test
@@ -18,6 +20,25 @@ public class TesteBancoJdbc {
         user.setNome("Teste");
         user.setEmail("teste@teste.com");
         userPosDao.salvar(user);
+    }
+
+    @Test
+    public void testSelect() {
+        UserPosDAO userPosDAO = new UserPosDAO();
+        List<UserposJava> userList = userPosDAO.listar();
+
+        for (UserposJava user : userList) {
+            System.out.println(user);
+            System.out.println("-------------------------------------");
+        }
+
+    }
+
+    @Test
+    public void testBuscar() {
+        UserPosDAO userPosDAO = new UserPosDAO();
+        UserposJava user = userPosDAO.buscar(2L);
+        System.out.println(user);
     }
 
 }
