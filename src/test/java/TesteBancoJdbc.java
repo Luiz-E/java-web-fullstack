@@ -48,4 +48,10 @@ public class TesteBancoJdbc {
         user.setNome("Teste Atualizado");
         userPosDAO.update(user);
     }
+
+    @Test
+    public void testDelete() {
+        UserPosDAO userPosDAO = new UserPosDAO();
+        userPosDAO.delete(3L);
+    }
 }
