@@ -20,11 +20,10 @@ public class UserPosDAO {
 
     public void salvar(UserposJava user) {
         try {
-            String sql = "insert into userposjava (id, nome, email) values (?, ?, ?)";
+            String sql = "insert into userposjava (nome, email) values (?, ?)";
             PreparedStatement insertStatement = conn.prepareStatement(sql);
-            insertStatement.setLong(1, user.getId());
-            insertStatement.setString(2, user.getNome());
-            insertStatement.setString(3, user.getEmail());
+            insertStatement.setString(1, user.getNome());
+            insertStatement.setString(2, user.getEmail());
             insertStatement.execute();
             conn.commit();
         } catch (Exception e) {
