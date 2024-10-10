@@ -1,5 +1,6 @@
 import org.example.conexaojdbc.SingleConnection;
 import org.example.dao.UserPosDAO;
+import org.example.model.Telefone;
 import org.example.model.UserposJava;
 import org.junit.Test;
 
@@ -53,5 +54,16 @@ public class TesteBancoJdbc {
     public void testDelete() {
         UserPosDAO userPosDAO = new UserPosDAO();
         userPosDAO.delete(3L);
+    }
+
+    @Test
+    public void testInsertTelefone() {
+        Telefone telefone = new Telefone();
+        telefone.setNumero("(87) 4564-5435");
+        telefone.setTipo("casa");
+        telefone.setUsuario(2L);
+
+        UserPosDAO userPosDAO = new UserPosDAO();
+        userPosDAO.salvarTelefone(telefone);
     }
 }

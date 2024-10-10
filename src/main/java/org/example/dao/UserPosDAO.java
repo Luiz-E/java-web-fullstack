@@ -1,6 +1,7 @@
 package org.example.dao;
 
 import org.example.conexaojdbc.SingleConnection;
+import org.example.model.Telefone;
 import org.example.model.UserposJava;
 
 import java.sql.Connection;
@@ -32,6 +33,25 @@ public class UserPosDAO {
             } catch (SQLException e2) {
                 e2.printStackTrace();
             }
+        }
+    }
+
+    public void salvarTelefone(Telefone telefone) {
+        String sql = "insert into telefoneuser (numero, tipo, usuariopessoa) values (?, ?, ?)";
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, telefone.getNumero());
+            statement.setString(2, telefone.getTipo());
+            statement.setLong(3, telefone.getUsuario());
+            statement.execute();
+            conn.commit();
+        } catch (Exception e) {
+            try {
+                conn.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
         }
     }
 
