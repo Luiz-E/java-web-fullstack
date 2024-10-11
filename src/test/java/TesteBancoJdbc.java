@@ -1,5 +1,6 @@
 import org.example.conexaojdbc.SingleConnection;
 import org.example.dao.UserPosDAO;
+import org.example.model.BeanUserFone;
 import org.example.model.Telefone;
 import org.example.model.UserposJava;
 import org.junit.Test;
@@ -65,5 +66,15 @@ public class TesteBancoJdbc {
 
         UserPosDAO userPosDAO = new UserPosDAO();
         userPosDAO.salvarTelefone(telefone);
+    }
+
+    @Test
+    public void testCarregaFones() {
+        UserPosDAO userPosDAO = new UserPosDAO();
+        List<BeanUserFone> beanUserFones = userPosDAO.listaUserFone(2L);
+        for (BeanUserFone beanUserFone : beanUserFones) {
+            System.out.println(beanUserFone);
+            System.out.println("--------------------------------");
+        }
     }
 }

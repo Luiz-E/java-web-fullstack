@@ -1,6 +1,7 @@
 package org.example.dao;
 
 import org.example.conexaojdbc.SingleConnection;
+import org.example.model.BeanUserFone;
 import org.example.model.Telefone;
 import org.example.model.UserposJava;
 
@@ -120,4 +121,25 @@ public class UserPosDAO {
             e.printStackTrace();
         }
     }
+
+    public List<BeanUserFone> listaUserFone(Long id) {
+        List<BeanUserFone> beanUserFones = new ArrayList<>();
+        String sql = "select nome, numero, email from telefoneuser as fone inner join userposjava as userp on userp.id = fone.usuariopessoa where userp.id = " + id;
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+             while (resultSet.next()) {
+                 BeanUserFone userFone = new BeanUserFone();
+                 userFone.setEmail(resultSet.getString("email"));
+                 userFone.setNome(resultSet.getString("nome"));
+                 userFone.setNumero(resultSet.getString("numero"));
+                 beanUserFones.add(userFone);
+             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return beanUserFones;
+    }
+
 }
