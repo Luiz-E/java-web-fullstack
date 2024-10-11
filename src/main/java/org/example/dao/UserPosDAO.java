@@ -142,4 +142,25 @@ public class UserPosDAO {
         return beanUserFones;
     }
 
+    public void deleteFones(Long id) {
+        String sqlFone = "delete from telefoneuser where usuariopessoa = " + id;
+        String sqlUser = "delete from userposjava where id = " + id;
+        try {
+            PreparedStatement statement = conn.prepareStatement(sqlFone);
+            statement.executeUpdate();
+            conn.commit();
+            statement = conn.prepareStatement(sqlUser);
+            statement.executeUpdate();
+            conn.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+    }
+
 }

@@ -77,4 +77,10 @@ public class TesteBancoJdbc {
             System.out.println("--------------------------------");
         }
     }
+
+    @Test
+    public void testDeleteFone() {
+        UserPosDAO dao = new UserPosDAO();
+        dao.deleteFones(2L);
+    }
 }
