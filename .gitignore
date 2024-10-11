@@ -36,3 +36,13 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/.smarttomcat/orientacao_a_objetos/conf/catalina.policy
+/.smarttomcat/orientacao_a_objetos/conf/catalina.properties
+/.smarttomcat/orientacao_a_objetos/conf/context.xml
+/.smarttomcat/orientacao_a_objetos/conf/jaspic-providers.xml
+/.smarttomcat/orientacao_a_objetos/conf/jaspic-providers.xsd
+/.smarttomcat/orientacao_a_objetos/conf/logging.properties
+/.smarttomcat/orientacao_a_objetos/conf/server.xml
+/.smarttomcat/orientacao_a_objetos/conf/tomcat-users.xml
+/.smarttomcat/orientacao_a_objetos/conf/tomcat-users.xsd
+/.smarttomcat/orientacao_a_objetos/conf/web.xml
