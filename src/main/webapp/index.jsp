@@ -8,11 +8,26 @@
     <body>
         <h1>Bem vindo ao curso de JSP</h1>
         <form action="ServletLogin" method="post">
-            <label for="nome">Nome: </label>
-            <input name="nome" id="nome" type="text">
-            <label for="idade">Idade:</label>
-            <input name="idade" id="idade" type="text">
-            <input type="submit" value="Enviar">
+            <table>
+                <tr>
+                    <td><label for="login">Login: </label></td>
+                    <td><input name="login" id="login" type="text"></td>
+                </tr>
+                <tr>
+                    <td><label for="senha">Senha:</label></td>
+                    <td><input name="senha" id="senha" type="password"></td>
+                </tr>
+                <tr>
+                    <td colspan=2>
+                        <input style="width: 100%;" type="submit" value="Enviar">
+                    </td>
+                </tr>
+            </table>
         </form>
+
+        <h4>
+            ${msg}
+        </h4>
+
     </body>
 </html>
