@@ -12,4 +12,12 @@ public class Login implements Serializable {
         this.login = login;
         this.senha = senha;
     }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
 }

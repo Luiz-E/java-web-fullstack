@@ -27,6 +27,17 @@ public class ServletLogin extends HttpServlet {
 
         if (login != null && !login.isEmpty() && senha != null && !senha.isEmpty()) {
             Login modelLogin = new Login(login, senha);
+            if (modelLogin.getLogin().equalsIgnoreCase("admin") &&
+                    modelLogin.getSenha().equalsIgnoreCase("admin")) {
+                req.getSession().setAttribute("usuario", modelLogin);
+                RequestDispatcher redirecionar = req.getRequestDispatcher("principal/principal.jsp");
+                redirecionar.forward(req, resp);
+            } else {
+                RequestDispatcher redirecionar = req.getRequestDispatcher("index.jsp");
+                req.setAttribute("msg", "Informe o login e senha corretamente");
+                redirecionar.forward(req, resp);
+            }
+
         } else {
             RequestDispatcher redirecionar = req.getRequestDispatcher("index.jsp");
             req.setAttribute("msg", "Informe o login e senha corretamente");
