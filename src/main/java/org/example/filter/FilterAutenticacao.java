@@ -46,6 +46,9 @@ public class FilterAutenticacao implements Filter{
             conn.commit();
         } catch (Exception e) {
             e.printStackTrace();
+            RequestDispatcher redirecionar = req.getRequestDispatcher("/erro.jsp");
+            req.setAttribute("msg", e.getMessage());
+            redirecionar.forward(req, resp);
             try {
                 conn.rollback();
             } catch (SQLException ex) {
