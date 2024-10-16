@@ -22,9 +22,12 @@
 
             .msg {
                 position: absolute;
-                top: 70%;
+                top: 10%;
                 left: 33%;
                 font-size: 15px;
+                color: #664d03;
+                background-color: #fff3cd;
+                border-color: #ffecb5;
             }
         </style>
     </head>
@@ -32,12 +35,12 @@
         <h5>Bem vindo ao curso de JSP</h5>
         <form action="ServletLogin" method="post" class="row g-3 needs-validation" novalidate>
         <input type="hidden" value='<%= request.getParameter("url")%>' name="url"/>
-            <div class="col-md-6">
+            <div class="mb-3">
                 <label for="login" class="form-label">Login: </label>
                 <input name="login" id="login" type="text" class="form-control" required>
                 <div class="invalid-feedback">Informe o login</div>
             </div>
-            <div class="col-md-6">
+            <div class="mb-3">
                 <label for="senha" class="form-label">Senha:</label></td>
                 <input name="senha" id="senha" type="password" class="form-control" required>
                 <div class="invalid-feedback">Informe a senha</div>
