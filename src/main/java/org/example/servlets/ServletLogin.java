@@ -19,7 +19,14 @@ public class ServletLogin extends HttpServlet {
     public ServletLogin(){};
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);
+        String acao = req.getParameter("acao");
+        if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("logout")) {
+            req.getSession().invalidate();
+            RequestDispatcher redirecionar = req.getRequestDispatcher("index.jsp");
+            redirecionar.forward(req, resp);
+        } else {
+            doPost(req, resp);
+        }
     }
 
     @Override
