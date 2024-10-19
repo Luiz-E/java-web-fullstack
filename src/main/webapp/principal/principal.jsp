@@ -49,31 +49,31 @@
                 <ul class="iew-download">
                     <li>
                         <a href="http://www.google.com/chrome/">
-                            <img src="assets/images/browser/chrome.png" alt="Chrome">
+                            <img src="<%=request.getContextPath() %>/assets/images/browser/chrome.png" alt="Chrome">
                             <div>Chrome</div>
                         </a>
                     </li>
                     <li>
                         <a href="https://www.mozilla.org/en-US/firefox/new/">
-                            <img src="assets/images/browser/firefox.png" alt="Firefox">
+                            <img src="<%=request.getContextPath() %>/assets/images/browser/firefox.png" alt="Firefox">
                             <div>Firefox</div>
                         </a>
                     </li>
                     <li>
                         <a href="http://www.opera.com">
-                            <img src="assets/images/browser/opera.png" alt="Opera">
+                            <img src="<%=request.getContextPath() %>/assets/images/browser/opera.png" alt="Opera">
                             <div>Opera</div>
                         </a>
                     </li>
                     <li>
                         <a href="https://www.apple.com/safari/">
-                            <img src="assets/images/browser/safari.png" alt="Safari">
+                            <img src="<%=request.getContextPath() %>/assets/images/browser/safari.png" alt="Safari">
                             <div>Safari</div>
                         </a>
                     </li>
                     <li>
                         <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                            <img src="assets/images/browser/ie.png" alt="">
+                            <img src="<%=request.getContextPath() %>/assets/images/browser/ie.png" alt="">
                             <div>IE (9 & above)</div>
                         </a>
                     </li>
