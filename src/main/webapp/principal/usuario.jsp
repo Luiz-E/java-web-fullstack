@@ -26,7 +26,37 @@
                                         <!-- Page-body start -->
                                         <div class="page-body">
                                             <div class="row">
-                                                <h1>Cadastro de usuário</h1>
+                                                <div class="col-sm-12">
+                                                    <!-- Basic Form Inputs card start -->
+                                                    <div class="card">
+                                                        <div class="card-block">
+                                                            <h4 class="sub-title">Cad. Usuário</h4>
+                                                            <form class="form-material">
+                                                                <div class="form-group form-default">
+                                                                    <input type="text" name="footer-email" class="form-control" required="">
+                                                                    <span class="form-bar"></span>
+                                                                    <label class="float-label">ID:</label>
+                                                                </div>
+                                                                <div class="form-group form-default">
+                                                                    <input type="text" name="footer-email" class="form-control" required="">
+                                                                    <span class="form-bar"></span>
+                                                                    <label class="float-label">Nome:</label>
+                                                                </div>
+                                                                <div class="form-group form-default">
+                                                                    <input type="text" name="footer-email" class="form-control" required="">
+                                                                    <span class="form-bar"></span>
+                                                                    <label class="float-label">E-mail:</label>
+                                                                </div>
+                                                                <div class="form-group form-default">
+                                                                    <input type="password" name="footer-email" class="form-control" required="">
+                                                                    <span class="form-bar"></span>
+                                                                    <label class="float-label">Password:</label>
+                                                                </div>
+                                                                <button class="btn btn-primary waves-effect waves-light">Primary Button</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- Page-body end -->
