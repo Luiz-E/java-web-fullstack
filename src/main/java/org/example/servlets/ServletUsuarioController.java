@@ -30,7 +30,7 @@ public class ServletUsuarioController extends HttpServlet {
         modelLogin.setId((id != null && !id.isEmpty()) ? Long.parseLong(id) : null);
 
         RequestDispatcher redireciona = request.getRequestDispatcher("principal/usuario.jsp");
+        request.setAttribute("modelLogin", modelLogin);
         redireciona.forward(request, response);
-
     }
 }
