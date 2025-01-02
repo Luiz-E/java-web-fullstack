@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.example.dao.DAOUsuarioRepository;
 import org.example.model.Login;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.io.IOException;
 public class ServletUsuarioController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-
+    private DAOUsuarioRepository daoUsuarioRepository = new DAOUsuarioRepository();
     public ServletUsuarioController() {}
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,8 +30,15 @@ public class ServletUsuarioController extends HttpServlet {
         Login modelLogin = new Login(nome, email, login, senha);
         modelLogin.setId((id != null && !id.isEmpty()) ? Long.parseLong(id) : null);
 
-        RequestDispatcher redireciona = request.getRequestDispatcher("principal/usuario.jsp");
-        request.setAttribute("modelLogin", modelLogin);
-        redireciona.forward(request, response);
+        try {
+            daoUsuarioRepository.gravarUsuario(modelLogin);
+            request.setAttribute("msg", "Operação realizadad com sucesso!");
+            request.setAttribute("modelLogin", modelLogin);
+            request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("msg", e.getMessage());
+            request.getRequestDispatcher("erro.jsp").forward(request, response);
+        }
     }
 }
