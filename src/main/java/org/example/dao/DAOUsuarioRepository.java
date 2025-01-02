@@ -5,6 +5,7 @@ import org.example.model.Login;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DAOUsuarioRepository {
@@ -15,7 +16,7 @@ public class DAOUsuarioRepository {
         conn = SingleConnection.getConn();
     }
 
-    public void gravarUsuario(Login modelLogin) throws SQLException {
+    public Login gravarUsuario(Login modelLogin) throws SQLException {
         String sql = "INSERT INTO model_login (nome, email, login, senha) VALUES (?, ?, ?, ?)";
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
         preparedStatement.setString(1, modelLogin.getNome());
@@ -24,5 +25,22 @@ public class DAOUsuarioRepository {
         preparedStatement.setString(4, modelLogin.getSenha());
         preparedStatement.execute();
         conn.commit();
+
+        return this.consultaUsuario(modelLogin.getLogin());
+    }
+
+    public Login consultaUsuario(String login) throws SQLException {
+        Login modelLogin = new Login();
+        String sql = "SELECT * FROM model_login WHERE upper(login) = upper('"+login+"')";
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        ResultSet result = preparedStatement.executeQuery();
+        if (result.next()) {
+            modelLogin.setId(result.getLong("id"));
+            modelLogin.setEmail(result.getString("email"));
+            modelLogin.setNome(result.getString("nome"));
+            modelLogin.setLogin(result.getString("login"));
+            modelLogin.setSenha(result.getString("senha"));
+        }
+        return modelLogin;
     }
 }

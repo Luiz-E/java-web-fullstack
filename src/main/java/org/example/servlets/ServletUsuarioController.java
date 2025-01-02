@@ -31,7 +31,7 @@ public class ServletUsuarioController extends HttpServlet {
         modelLogin.setId((id != null && !id.isEmpty()) ? Long.parseLong(id) : null);
 
         try {
-            daoUsuarioRepository.gravarUsuario(modelLogin);
+            modelLogin = daoUsuarioRepository.gravarUsuario(modelLogin);
             request.setAttribute("msg", "Operação realizadad com sucesso!");
             request.setAttribute("modelLogin", modelLogin);
             request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
