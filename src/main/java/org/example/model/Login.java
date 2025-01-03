@@ -50,4 +50,8 @@ public class Login implements Serializable {
                 ", senha='" + senha + '\'' +
                 '}';
     }
+
+    public boolean isNovo() {
+        return this.id == null;
+    }
 }
