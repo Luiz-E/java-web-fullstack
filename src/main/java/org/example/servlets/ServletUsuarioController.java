@@ -9,6 +9,7 @@ import org.example.dao.DAOUsuarioRepository;
 import org.example.model.Login;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(urlPatterns = {"/ServletUsuarioController"})
 public class ServletUsuarioController extends HttpServlet {
@@ -31,6 +32,18 @@ public class ServletUsuarioController extends HttpServlet {
                 request.setAttribute("msg", e.getMessage());
                 request.getRequestDispatcher("erro.jsp").forward(request, response);
             }
+        } else if (acao != null && acao.equalsIgnoreCase("deletarajax")) {
+            String idUser = request.getParameter("id");
+            try {
+                daoUsuarioRepository.deletarUsuario(idUser);
+                response.getWriter().write("Excluído com sucesso");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                request.setAttribute("msg", e.getMessage());
+                request.getRequestDispatcher("erro.jsp").forward(request, response);
+            }
+        } else {
+            request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
         }
 
 
