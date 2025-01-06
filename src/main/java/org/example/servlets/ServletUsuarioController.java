@@ -21,7 +21,10 @@ public class ServletUsuarioController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String acao = request.getParameter("acao");
-        if (acao != null && acao.equalsIgnoreCase("deletar")) {
+        if (acao == null ) {
+            return;
+        }
+        if (acao.equalsIgnoreCase("deletar")) {
             String idUser = request.getParameter("id");
             try {
                 daoUsuarioRepository.deletarUsuario(idUser);
@@ -32,7 +35,7 @@ public class ServletUsuarioController extends HttpServlet {
                 request.setAttribute("msg", e.getMessage());
                 request.getRequestDispatcher("erro.jsp").forward(request, response);
             }
-        } else if (acao != null && acao.equalsIgnoreCase("deletarajax")) {
+        } else if (acao.equalsIgnoreCase("deletarajax")) {
             String idUser = request.getParameter("id");
             try {
                 daoUsuarioRepository.deletarUsuario(idUser);
@@ -42,11 +45,12 @@ public class ServletUsuarioController extends HttpServlet {
                 request.setAttribute("msg", e.getMessage());
                 request.getRequestDispatcher("erro.jsp").forward(request, response);
             }
+        } else if (acao.equalsIgnoreCase("buscarUserAjax")) {
+            String nome = request.getParameter("nome");
+            System.out.println(nome);
         } else {
             request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
         }
-
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

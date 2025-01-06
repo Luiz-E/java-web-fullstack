@@ -199,7 +199,17 @@
             function buscarUsuario() {
                 let nome = document.getElementById('nomeBusca').value;
                 if (nome != null && nome != '' && nome.trim() != '') {
+                let urlAction = document.getElementById('id').action
+                    $.ajax({
+                        method: 'get',
+                        url: urlAction,
+                        data: 'nome=' + nome + '&acao=buscarUserAjax',
+                        success: (response) => {
 
+                        }
+                    }).fail(xhr, status, errorThrown) => {
+                        alert('Erro ao buscar usuário' + xhr.responseText);
+                    });
                 }
             }
         </script>
